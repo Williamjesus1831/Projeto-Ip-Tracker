@@ -20,9 +20,49 @@
       integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
       crossorigin=""
     ></script>
-    <link rel="stylesheet" href="./css/style.css  " />
+    <link rel="stylesheet" href="./css/style.css" />
     <script src="./js/main.js" defer></script>
+    <meta
+      name="description"
+      content="Projeto de Geolocalização atraves de Api"
+    />
     <title>Ip Tracker</title>
   </head>
-  <body></body>
+  <body>
+    <header>
+      <div class="inputs-container">
+        <h1>Rastreador de endereço por IP</h1>
+        <form>
+          <input
+          type="text"
+          name="input-address"
+          id="input-address"
+          placeholder="Insira um endereço de ip"
+          />
+          <input type="button" value="" class="Input-btn" />
+      </div>
+      <div class="address-info adress-info-container">
+        <div class="address-info-ip">
+          <span>endereço IP</span>
+          <p class="info-ip"></p>
+        </div>
+        <div class="address-info-location">
+          <span>local</span>
+          <p class="info-location"></p>
+        </div>
+        <div class="address-info-timezone">
+          <span>fuso horario</span>
+          <p class="info-timezone"></p>
+        </div>
+        <div class="address-info-isp">
+          <span>provedor</span>
+          <p class="info-isp"></p>
+        </div>
+      </div>
+      </form>
+    </header>
+    <main>
+      <div id="map"></div>
+    </main>
+  </body>
 </html>
