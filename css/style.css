@@ -1,8 +1,3 @@
-// imports de arquivos scss
-@import "variaveis";
-@import "mixins";
-
-// Parametros de reset basicos
 * {
   padding: 0;
   margin: 0;
@@ -11,3 +6,5 @@
   text-decoration: none;
   font-family: "Rubik", sans-serif;
 }
+
+/*# sourceMappingURL=style.css.map */

@@ -1,0 +1,7 @@
+@import "variaveis";
+
+@mixin estilo-de-tipo($cor: $very-dark-gray, $tamanho: 1.1rem, $peso: $medium) {
+  color: $cor;
+  font-size: $tamanho;
+  font-weight: $peso;
+}
