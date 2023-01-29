@@ -11,3 +11,100 @@
   text-decoration: none;
   font-family: "Rubik", sans-serif;
 }
+
+// estilos da seção header
+header {
+  position: relative;
+  height: 250px;
+  background-image: url(../../img/pattern-bg.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+
+  .inputs-container {
+    padding-top: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+  }
+
+  h1 {
+    @include estilo-de-tipo(#fff, 2rem);
+  }
+
+  form {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+    .input-address {
+      padding: 15px 40px;
+      border-radius: 10px 0 0 10px;
+      width: 40%;
+      border: none;
+      outline: none;
+      @include estilo-de-tipo($very-dark-gray, 1.1rem, regular);
+    }
+
+    .input-btn {
+      padding: 15px;
+      border-radius: 0 10px 10px 0;
+      background-color: $very-dark-gray;
+      border: none;
+    }
+  }
+
+  .address-info {
+    background-color: #fff;
+    border-radius: 10px;
+    position: absolute;
+    bottom: -15%;
+    align-self: center;
+    width: 80%;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    -webkit-box-shadow: 9px 13px 27px -16px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 9px 13px 27px -16px rgba(0, 0, 0, 0.75);
+    box-shadow: 9px 13px 27px -16px rgba(0, 0, 0, 0.75);
+
+    div {
+      position: relative;
+      padding-left: 20px;
+      width: 100%;
+
+      span {
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        @include estilo-de-tipo($dark-gray, 0.6rem, bold);
+      }
+
+      p {
+        position: relative;
+        padding-top: 10px;
+        max-width: 80%;
+        word-wrap: break-word;
+        @include estilo-de-tipo($very-dark-gray, 1.2rem, bold);
+
+        &::after {
+          content: "";
+          position: absolute;
+          display: block;
+          width: 1px;
+          height: 50px;
+          top: 0;
+          left: -20px;
+          background-color: gray;
+        }
+      }
+    }
+
+    div:first-child p::after {
+      height: 0;
+    }
+  }
+}

@@ -7,4 +7,97 @@
   font-family: "Rubik", sans-serif;
 }
 
+header {
+  position: relative;
+  height: 250px;
+  background-image: url(../../img/pattern-bg.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+}
+header .inputs-container {
+  padding-top: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+header h1 {
+  color: #fff;
+  font-size: 2rem;
+  font-weight: 500;
+}
+header form {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+header form .input-address {
+  padding: 15px 40px;
+  border-radius: 10px 0 0 10px;
+  width: 40%;
+  border: none;
+  outline: none;
+  color: hsl(0deg, 0%, 17%);
+  font-size: 1.1rem;
+  font-weight: regular;
+}
+header form .input-btn {
+  padding: 15px;
+  border-radius: 0 10px 10px 0;
+  background-color: hsl(0deg, 0%, 17%);
+  border: none;
+}
+header .address-info {
+  background-color: #fff;
+  border-radius: 10px;
+  position: absolute;
+  bottom: -15%;
+  align-self: center;
+  width: 80%;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  -webkit-box-shadow: 9px 13px 27px -16px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 9px 13px 27px -16px rgba(0, 0, 0, 0.75);
+  box-shadow: 9px 13px 27px -16px rgba(0, 0, 0, 0.75);
+}
+header .address-info div {
+  position: relative;
+  padding-left: 20px;
+  width: 100%;
+}
+header .address-info div span {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: hsl(0deg, 0%, 59%);
+  font-size: 0.6rem;
+  font-weight: bold;
+}
+header .address-info div p {
+  position: relative;
+  padding-top: 10px;
+  max-width: 80%;
+  word-wrap: break-word;
+  color: hsl(0deg, 0%, 17%);
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+header .address-info div p::after {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 1px;
+  height: 50px;
+  top: 0;
+  left: -20px;
+  background-color: gray;
+}
+header .address-info div:first-child p::after {
+  height: 0;
+}
+
 /*# sourceMappingURL=style.css.map */
