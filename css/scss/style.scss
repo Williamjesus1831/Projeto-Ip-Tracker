@@ -50,6 +50,10 @@ header {
       @include estilo-de-tipo($very-dark-gray, 1.1rem, regular);
     }
 
+    .input-address.error::placeholder {
+      color: red;
+    }
+
     .input-btn {
       padding: 15px;
       border-radius: 0 10px 10px 0;
@@ -124,6 +128,25 @@ header {
       to {
         transform: rotateY(0);
         opacity: 1;
+      }
+    }
+  }
+
+  .address-info.colapse {
+    transform: translateY(-20px);
+    animation: slide-up;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+
+    @keyframes slide-up {
+      from {
+        height: auto;
+        opacity: 1;
+        transform: rotateY(0);
+      }
+      to {
+        height: 0;
+        opacity: 0;
       }
     }
   }

@@ -45,6 +45,9 @@ header form .input-address {
   font-size: 1.1rem;
   font-weight: regular;
 }
+header form .input-address.error::placeholder {
+  color: red;
+}
 header form .input-btn {
   padding: 15px;
   border-radius: 0 10px 10px 0;
@@ -115,6 +118,23 @@ header .address-info.active {
   to {
     transform: rotateY(0);
     opacity: 1;
+  }
+}
+header .address-info.colapse {
+  transform: translateY(-20px);
+  animation: slide-up;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
+@keyframes slide-up {
+  from {
+    height: auto;
+    opacity: 1;
+    transform: rotateY(0);
+  }
+  to {
+    height: 0;
+    opacity: 0;
   }
 }
 
