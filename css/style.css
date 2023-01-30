@@ -50,15 +50,18 @@ header form .input-btn {
   border-radius: 0 10px 10px 0;
   background-color: hsl(0deg, 0%, 17%);
   border: none;
+  cursor: pointer;
 }
 header .address-info {
   background-color: #fff;
   border-radius: 10px;
   position: absolute;
-  bottom: -15%;
+  height: 0;
+  overflow: hidden;
+  z-index: 999;
+  top: 80%;
   align-self: center;
   width: 80%;
-  padding: 20px;
   display: flex;
   justify-content: space-between;
   -webkit-box-shadow: 9px 13px 27px -16px rgba(0, 0, 0, 0.75);
@@ -67,7 +70,7 @@ header .address-info {
 }
 header .address-info div {
   position: relative;
-  padding-left: 20px;
+  padding: 20px 0px 20px 20px;
   width: 100%;
 }
 header .address-info div span {
@@ -81,7 +84,6 @@ header .address-info div p {
   position: relative;
   padding-top: 10px;
   max-width: 80%;
-  word-wrap: break-word;
   color: hsl(0deg, 0%, 17%);
   font-size: 1.2rem;
   font-weight: bold;
@@ -91,13 +93,34 @@ header .address-info div p::after {
   position: absolute;
   display: block;
   width: 1px;
-  height: 50px;
+  height: 40px;
   top: 0;
   left: -20px;
   background-color: gray;
 }
 header .address-info div:first-child p::after {
   height: 0;
+}
+header .address-info.active {
+  height: auto;
+  transform: translateY(-30px);
+  animation: slide-down;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
+@keyframes slide-down {
+  from {
+    opacity: 0;
+  }
+  to {
+    transform: rotateY(0);
+    opacity: 1;
+  }
+}
+
+main #map {
+  height: calc(100vh - 250px);
+  position: relative;
 }
 
 /*# sourceMappingURL=style.css.map */
