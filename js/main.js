@@ -16,26 +16,30 @@ const provedor = document.querySelector(".address-info-isp p");
 function exibirError(error) {
   if (error === "vazio") {
     inputIp.classList.add("error");
-  } else if (error === "fetchFalhou") {
+  } else if (error === "invalido") {
+    inputIp.classList.add("error");
+    inputIp.setAttribute("placeholder", "IP invalido, tente novamente");
+    setTimeout(() => {
+      gerarMapa("163.172.70.225");
+    }, 100);
   }
 }
 
 async function gerarMapa(ip) {
-  if (ip === "") {
-    exibirError("vazio");
-    return;
-  }
-
   const dados = await fetch(`http://ip-api.com/json/${ip}`)
     .then((r) => r.json())
-    .catch((error) => exibirError())
+    .catch((error) => exibirError("invalido"))
     .finally();
+
+  if (dados.status === "fail") {
+    exibirError("invalido");
+    return;
+  }
 
   enderecoIP.innerText = dados.query;
   localizacao.innerText = `${dados.city}, ${dados.countryCode}, ${dados.zip}`;
   fusohorario.innerText = dados.timezone;
   if (dados.isp.length > 20) {
-    console.log("sdsd");
     provedor.innerText = dados.isp.substr(0, 17) + "...";
   } else provedor.innerText = dados.isp;
 
@@ -63,6 +67,7 @@ function validarDigitos(e) {
 // eventos
 
 inputIp.addEventListener("focus", () => {
+  inputIp.setAttribute("placeholder", "Insira um endereço de iP");
   inputIp.classList.remove("error");
 });
 
@@ -73,8 +78,12 @@ inputIp.addEventListener("input", (e) => {
 
 searchInputBtn.addEventListener("click", (e) => {
   e.preventDefault();
-  containerDeDados.classList.replace("active", "colapse");
   const ip = inputIp.value;
+  if (ip === "") {
+    exibirError("vazio");
+    return;
+  }
+  containerDeDados.classList.replace("active", "colapse");
   setTimeout(() => {
     gerarMapa(ip);
   }, 100);
