@@ -5,6 +5,7 @@ const containerDeDados = document.querySelector(".adress-info-container");
 
 // campos preenchidos pelos dados
 
+const map = L.map("map");
 const enderecoIP = document.querySelector(".address-info-ip p");
 const localizacao = document.querySelector(".address-info-location p");
 const fusohorario = document.querySelector(".address-info-timezone p");
@@ -12,50 +13,51 @@ const provedor = document.querySelector(".address-info-isp p");
 
 // funções
 
-function exibirerro(error) {
+function exibirError(error) {
   if (error === "vazio") {
     inputIp.classList.add("error");
   } else if (error === "fetchFalhou") {
   }
 }
 
-async function gerarMapaInicial() {
-  const dados = await fetch("http://ip-api.com/json/163.172.70.225")
+async function gerarMapa(ip) {
+  if (ip === "") {
+    exibirError("vazio");
+    return;
+  }
+
+  const dados = await fetch(`http://ip-api.com/json/${ip}`)
     .then((r) => r.json())
-    .catch((error) => mensagemErro())
+    .catch((error) => exibirError())
     .finally();
 
   enderecoIP.innerText = dados.query;
   localizacao.innerText = `${dados.city}, ${dados.countryCode}, ${dados.zip}`;
   fusohorario.innerText = dados.timezone;
-  provedor.innerText = dados.isp;
+  if (dados.isp.length > 20) {
+    console.log("sdsd");
+    provedor.innerText = dados.isp.substr(0, 17) + "...";
+  } else provedor.innerText = dados.isp;
 
-  const map = L.map("map").setView([48.8714, 2.32141], 13);
+  map.setView([`${dados.lat}`, `${dados.lon}`], 13);
 
   L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
     attribution:
       '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
   }).addTo(map);
 
-  const icone = L.icon({
+  let icone = L.icon({
     iconUrl: "../img/icon-location.svg",
     iconSize: [46, 56],
     iconAnchor: [30, 55],
   });
 
-  L.marker([48.8714, 2.32141], { icon: icone }).addTo(map);
+  L.marker([`${dados.lat}`, `${dados.lon}`], { icon: icone }).addTo(map);
+  containerDeDados.classList.replace("colapse", "active");
 }
 
 function validarDigitos(e) {
   return e.replace(/[^0-9.]/g, "");
-}
-
-async function obterDadosIp(e) {
-  if (e === "") {
-    exibirerro("vazio");
-  } else {
-    containerDeDados.classList.replace("active", "colapse");
-  }
 }
 
 // eventos
@@ -71,8 +73,13 @@ inputIp.addEventListener("input", (e) => {
 
 searchInputBtn.addEventListener("click", (e) => {
   e.preventDefault();
-  obterDadosIp(inputIp.value);
+  containerDeDados.classList.replace("active", "colapse");
+  const ip = inputIp.value;
+  setTimeout(() => {
+    gerarMapa(ip);
+  }, 100);
+  inputIp.value = "";
 });
 
 // execuções
-gerarMapaInicial();
+gerarMapa("163.172.70.225");
