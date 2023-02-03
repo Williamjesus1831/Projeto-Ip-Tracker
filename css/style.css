@@ -17,18 +17,38 @@ header {
   display: flex;
   flex-direction: column;
 }
+@media screen and (max-width: 830px) {
+  header {
+    height: 270px;
+  }
+}
 header .inputs-container {
   padding-top: 50px;
   display: flex;
+  text-align: center;
+  word-wrap: break-word;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 20px;
 }
+@media screen and (max-width: 830px) {
+  header .inputs-container {
+    padding-top: 20px;
+  }
+}
 header h1 {
   color: #fff;
   font-size: 2rem;
   font-weight: 500;
+}
+@media screen and (max-width: 830px) {
+  header h1 {
+    padding: 0 20px;
+    color: #fff;
+    font-size: 1.6rem;
+    font-weight: 500;
+  }
 }
 header form {
   width: 100%;
@@ -44,6 +64,11 @@ header form .input-address {
   color: hsl(0deg, 0%, 17%);
   font-size: 1.1rem;
   font-weight: regular;
+}
+@media screen and (max-width: 830px) {
+  header form .input-address {
+    width: 80%;
+  }
 }
 header form .input-address.error::placeholder {
   color: red;
@@ -61,7 +86,7 @@ header .address-info {
   position: absolute;
   height: 0;
   overflow: hidden;
-  z-index: 999;
+  z-index: 9999;
   top: 80%;
   align-self: center;
   width: 80%;
@@ -71,10 +96,24 @@ header .address-info {
   -moz-box-shadow: 9px 13px 27px -16px rgba(0, 0, 0, 0.75);
   box-shadow: 9px 13px 27px -16px rgba(0, 0, 0, 0.75);
 }
+@media screen and (max-width: 830px) {
+  header .address-info {
+    text-align: center;
+    flex-direction: column;
+    width: 90%;
+    top: 70%;
+    padding: 20px;
+  }
+}
 header .address-info div {
   position: relative;
   padding: 20px 0px 20px 20px;
   width: 100%;
+}
+@media screen and (max-width: 830px) {
+  header .address-info div {
+    padding: 0;
+  }
 }
 header .address-info div span {
   text-transform: uppercase;
@@ -86,7 +125,6 @@ header .address-info div span {
 header .address-info div p {
   position: relative;
   padding-top: 10px;
-  max-width: 80%;
   color: hsl(0deg, 0%, 17%);
   font-size: 1.2rem;
   font-weight: bold;
@@ -137,10 +175,19 @@ header .address-info.colapse {
     opacity: 0;
   }
 }
+header .address-info.disable {
+  display: none;
+}
 
 main #map {
   height: calc(100vh - 250px);
   position: relative;
+}
+@media screen and (max-width: 830px) {
+  main #map {
+    height: calc(100vh - 270px);
+    padding: 0;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

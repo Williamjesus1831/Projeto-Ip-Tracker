@@ -23,17 +23,32 @@ header {
   display: flex;
   flex-direction: column;
 
+  @media screen and (max-width: 830px) {
+    height: 270px;
+  }
+
   .inputs-container {
     padding-top: 50px;
     display: flex;
+    text-align: center;
+    word-wrap: break-word;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 20px;
+
+    @media screen and (max-width: 830px) {
+      padding-top: 20px;
+    }
   }
 
   h1 {
     @include estilo-de-tipo(#fff, 2rem);
+
+    @media screen and (max-width: 830px) {
+      padding: 0 20px;
+      @include estilo-de-tipo(#fff, 1.6rem);
+    }
   }
 
   form {
@@ -48,6 +63,10 @@ header {
       border: none;
       outline: none;
       @include estilo-de-tipo($very-dark-gray, 1.1rem, regular);
+
+      @media screen and (max-width: 830px) {
+        width: 80%;
+      }
     }
 
     .input-address.error::placeholder {
@@ -79,10 +98,24 @@ header {
     -moz-box-shadow: 9px 13px 27px -16px rgba(0, 0, 0, 0.75);
     box-shadow: 9px 13px 27px -16px rgba(0, 0, 0, 0.75);
 
+    @media screen and (max-width: 830px) {
+      text-align: center;
+      // margin-top: 20px;
+      // display: block;
+      flex-direction: column;
+      width: 90%;
+      top: 70%;
+      padding: 20px;
+    }
+
     div {
       position: relative;
       padding: 20px 0px 20px 20px;
       width: 100%;
+
+      @media screen and (max-width: 830px) {
+        padding: 0;
+      }
 
       span {
         text-transform: uppercase;
@@ -93,7 +126,6 @@ header {
       p {
         position: relative;
         padding-top: 10px;
-        max-width: 80%;
         @include estilo-de-tipo($very-dark-gray, 1.2rem, bold);
 
         &::after {
@@ -150,6 +182,10 @@ header {
       }
     }
   }
+
+  .address-info.disable {
+    display: none;
+  }
 }
 
 // estilos da seção do mapa
@@ -158,5 +194,10 @@ main {
   #map {
     height: calc(100vh - 250px);
     position: relative;
+
+    @media screen and (max-width: 830px) {
+      height: calc(100vh - 270px);
+      padding: 0;
+    }
   }
 }

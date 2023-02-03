@@ -1,4 +1,6 @@
 // campos de interação do usuario
+const body = document.querySelector("body");
+const mapaContainer = document.querySelector("#map");
 const inputIp = document.querySelector("form input");
 const searchInputBtn = document.querySelector(".input-btn");
 const containerDeDados = document.querySelector(".adress-info-container");
@@ -92,3 +94,14 @@ searchInputBtn.addEventListener("click", (e) => {
 
 // execuções
 gerarMapa("163.172.70.225");
+
+const observer = new MutationObserver((mutations) => {
+  mutations.forEach((i) => {
+    containerDeDados.classList.toggle("disable");
+  });
+});
+
+observer.observe(body, {
+  attributes: true,
+  classList: true,
+});
